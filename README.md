@@ -5,12 +5,12 @@ This a Repository to bootstrap a GKE Cluster assuming we will use also a GKE ins
 
 Requirements:
 ============
-1) A Google Cloud Platform Account with: \
+1) A Google Cloud Platform Account with: 
     - A project
     - A Service Account with: Kubernetes Engine Administrator, Compute Network Administrator and User Service Account
     - the service account .json key will be then asked in the scripts, it's also downloadable only on creation, so download it and keep it safe.
 2) Google Cloud CLI 
-3) A K8s cluster to install Crossplane on it, as already said, we can simply bootstrap a local cluster with kind or similar.
+3) A K8s cluster to install Crossplane on it we can create one on GKE or we can simply bootstrap a local cluster with kind or similar.
 
 How to Use:
 ==========
@@ -20,7 +20,7 @@ How to Use:
   At this point we should have created the cluster. We can check it through both kubectl (CLI) or GCP UI. 
 - we deploy the kubernetes-provider just by applying its entire folder: \
 $ kubectl apply -f crossplane_deploy_app/kubernetes_provider \
-  N.B: we apply the definition to the Crossplane host that will then automatically take care of deploying them on the GKE Cluster we created. \
+  N.B: we apply the definition to the Crossplane host that will then automatically take care of deploying them on the GKE Cluster we created. 
 - we deploy the voting-sample-app just by applying its entire folder: \
   $ kubectl apply -f crossplane_deploy_app/vote_app_definition \
   N.B: we apply the definition in Step 4 and 5 to the Crossplane host that will then automatically take care of deploying them on the GKE Cluster we created.
