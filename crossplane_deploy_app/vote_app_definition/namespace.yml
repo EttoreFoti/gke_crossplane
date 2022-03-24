@@ -1,0 +1,15 @@
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: Object
+metadata:
+  name: vote-namespace
+spec:
+  forProvider:
+    manifest:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: vote
+        labels:
+          example: "true"
+  providerConfigRef:
+    name: kubernetes-provider

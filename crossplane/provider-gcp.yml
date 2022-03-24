@@ -4,4 +4,4 @@ kind: Provider
 metadata:
   name: provider-gcp
 spec:
-  package: crossplane/provider-gcp:alpha
+  package: crossplane/provider-gcp:stable

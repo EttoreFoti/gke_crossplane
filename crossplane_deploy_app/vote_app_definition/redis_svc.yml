@@ -1,0 +1,24 @@
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: Object
+metadata:
+  name: redis-svc
+spec:
+  forProvider:
+    manifest:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        labels:
+          app: redis
+        name: redis
+        namespace: vote
+      spec:
+        type: ClusterIP
+        ports:
+        - name: "redis-service"
+          port: 6379
+          targetPort: 6379
+        selector:
+          app: redis
+  providerConfigRef:
+    name: kubernetes-provider

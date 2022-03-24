@@ -1,0 +1,32 @@
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: Object
+metadata:
+  name: result-deployment
+spec:
+  forProvider:
+    manifest:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        labels:
+          app: result
+        name: result
+        namespace: vote
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: result
+        template:
+          metadata:
+            labels:
+              app: result
+          spec:
+            containers:
+            - image: dockersamples/examplevotingapp_result:before
+              name: result
+              ports:
+              - containerPort: 80
+                name: result
+  providerConfigRef:
+    name: kubernetes-provider

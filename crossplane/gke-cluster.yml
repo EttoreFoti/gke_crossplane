@@ -30,6 +30,9 @@ spec:
       clientCertificateConfig:
         issueClientCertificate: false
     monitoringService: "none"
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
+    name: gke-conn
 ---
 
 # API Reference: https://doc.crds.dev/github.com/crossplane/provider-gcp/container.gcp.crossplane.io/NodePool/v1alpha1@v0.16.0

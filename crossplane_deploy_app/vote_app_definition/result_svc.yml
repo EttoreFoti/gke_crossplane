@@ -1,0 +1,25 @@
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: Object
+metadata:
+  name: result-svc
+spec:
+  forProvider:
+    manifest:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        labels:
+          app: result
+        name: result
+        namespace: vote
+      spec:
+        type: NodePort
+        ports:
+        - name: "result-service"
+          port: 5001
+          targetPort: 80
+          nodePort: 31001
+        selector:
+          app: result
+  providerConfigRef:
+    name: kubernetes-provider

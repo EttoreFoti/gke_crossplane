@@ -1,0 +1,29 @@
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: Object
+metadata:
+  name: worker-deployment
+spec:
+  forProvider:
+    manifest:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        labels:
+          app: worker
+        name: worker
+        namespace: vote
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: worker
+        template:
+          metadata:
+            labels:
+              app: worker
+          spec:
+            containers:
+            - image: dockersamples/examplevotingapp_worker
+              name: worker
+  providerConfigRef:
+    name: kubernetes-provider
