@@ -25,7 +25,8 @@ $ kubectl apply -f crossplane_deploy_app/kubernetes_provider \
 - we deploy the voting-sample-app just by applying its entire folder: \
   $ kubectl apply -f crossplane_deploy_app/vote_app_definition \
   N.B: we apply the definition in Step 4 and 5 to the Crossplane host that will then automatically take care of deploying them on the GKE Cluster we created.
-
+- To make the web app reachable from our browser the last step is to create firewall rules for the nodePort exposed since GCP Firewall would block us: \
+$ gcloud compute firewall-rules create test-app-node-port-31001 --allow tcp:31001 (do the same for both ports, the vote app and the result app, you use $ kubectl get svc -n vote to see the exposed ports; and kubectl get nodes -o wide to get the node IP)
 
 References:
 ===========
