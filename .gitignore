@@ -1,5 +1,4 @@
 provider-config-gcp.yml
 crossplane-gcp-provider-key.json
-scripts/env_vars.sh
 crossplane_deploy_app/kubernetes-provider-config.yml
 .idea/

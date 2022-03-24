@@ -8,15 +8,12 @@ spec:
     source: Secret
     secretRef:
       namespace: crossplane-system
-      name: crossplane-kconfig
+      name: gke-conn
       key: kubeconfig
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: crossplane-kconfig
-  namespace: crossplane-system
-type: Opaque
-data:
-  kubeconfig: ${BASE64_KUBECONFIG}
+  identity:
+    type: GoogleApplicationCredentials
+    source: Secret
+    secretRef:
+      name: gcp-account-creds
+      namespace: crossplane-system
+      key: credentials
