@@ -1,0 +1,22 @@
+---
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: kubernetes-provider
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: crossplane-kconfig
+      key: kubeconfig
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: crossplane-kconfig
+  namespace: crossplane-system
+type: Opaque
+data:
+  kubeconfig: ${BASE64_KUBECONFIG}

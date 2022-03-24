@@ -1,0 +1,22 @@
+#for now we're using the default network
+---
+apiVersion: compute.gcp.crossplane.io/v1beta1
+kind: Network
+metadata:
+  name: crossplane-nw
+spec:
+  forProvider:
+    autoCreateSubnetworks: false
+    routingConfig:
+      routingMode: 'REGIONAL'
+
+---
+apiVersion: compute.gcp.crossplane.io/v1beta1
+kind: Subnetwork
+metadata:
+  name: crossplane-snw
+spec:
+  forProvider:
+    ipCidrRange: '192.168.0.0/21'
+    networkRef: crossplane-nw
+  region: europe-west3-a
